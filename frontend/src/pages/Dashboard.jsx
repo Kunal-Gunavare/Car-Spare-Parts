@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
 import { CartContext } from "../context/CartContext";
-
+//kunal
 const Dashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newProduct, setNewProduct] = useState({ name: "", category: "", price: "", image: "" });
