@@ -10,7 +10,7 @@ require("dotenv").config(); // Load environment variables
 
 const registerController = async (req, res) => {
     try {
-      console.log("Received Request Body:", req.body); // Add this line to debug
+    //   console.log("Received Request Body:", req.body); // Add this line to debug
   
       const { name, email, password } = req.body;
       if (!name || !email || !password) {
@@ -55,16 +55,15 @@ const loginController  = async (req, res) => {
       }
   
       // Log user details for debugging
-      console.log("User  found:", user);
+    //   console.log("User  found:", user);
       
   
       // Compare hashed passwords
       const isPasswordCorrect = await bcrypt.compare(password, user.password);
-      console.log("Plain password:", password);
-      console.log("Hashed password:", user.password);
-      console.log("Password match result:", isPasswordCorrect);
-      res.status(200).json({ message: "Login successful" });
-  
+    //   console.log("Plain password:", password);
+    //   console.log("Hashed password:", user.password);
+    //   console.log("Password match result:", isPasswordCorrect);
+    
       if (!isPasswordCorrect) {
         return res.status(401).json({ message: "Invalid credentials" });
       }
@@ -72,7 +71,7 @@ const loginController  = async (req, res) => {
       // Generate JWT token (optional)
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
   
-      res.status(200).json({ message: "Login successful", token });
+      return res.status(200).json({ message: "Login successful", token });
     } catch (error) {
       console.error("Error during login:", error);
       res.status(500).json({ message: "Server error" });
@@ -275,7 +274,7 @@ const getAllUsersController = async (req, res) => {
 
 const forgetPassword = async (req, res) => {
     try {
-        console.log("Step 1: Received request body:", req.body);
+        // console.log("Step 1: Received request body:", req.body);
 
         const { email } = req.body;
         if (!email) {
@@ -292,19 +291,19 @@ const forgetPassword = async (req, res) => {
         }
 
         // Check if User model is defined
-        console.log("Step 1.5: Checking User model:", User);
+        // console.log("Step 1.5: Checking User model:", User);
 
         // Check if user exists
         const user = await User.findOne({ email });
-        console.log("Step 2: Fetched user:", user);
+        // console.log("Step 2: Fetched user:", user);
         if (!user) {
             return res.status(404).json({ message: "User with this email does not exist." });
         }
 
         // Verify PasswordResetTokens model
-        console.log("Step 2.5: Checking PasswordResetTokens model:", PasswordResetToken);
+        // console.log("Step 2.5: Checking PasswordResetTokens model:", PasswordResetToken);
 
-        console.log(user.email);
+        // console.log(user.email);
 
         // Remove existing tokens for the user
         // await PasswordResetToken.destroy({ where: { email } });
@@ -315,7 +314,7 @@ const forgetPassword = async (req, res) => {
         const token = crypto.randomBytes(32).toString("hex");
         const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
         const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
-        console.log("Step 4: Generated token:", token);
+        // console.log("Step 4: Generated token:", token);
 
         // Store token
         try {
@@ -435,9 +434,13 @@ const generateToken = (userId, email) => {
 
 // Get user profile
 const getUserProfile = async (req, res) => {
-
-    try {
-      const user = await User.findById(req.user.email).select('-password');
+  
+    const headers = req.headers;
+    const token = headers.authorization.split(" ")[1]
+    const tokenData = jwt.verify(token,process.env.JWT_SECRET_KEY)
+   const userId = tokenData.id;
+   try{
+      const user = await User.findById(userId).select('-password');
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }

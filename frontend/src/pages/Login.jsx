@@ -24,8 +24,10 @@ const LoginPage = () => {
         email: formData.email,
         password: formData.password,
       });
-
+ 
       if (response.status === 200) {
+        const token = response.data.token;
+        localStorage.setItem("token",token)
         alert("Login successful!");
         navigate("/Dashboard"); // Redirect to Dashboard page
       }
