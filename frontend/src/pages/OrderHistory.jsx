@@ -86,7 +86,6 @@ const OrderHistoryPage = () => {
   
     yPos += 10;
   
-    // Add Items
     data.items.forEach((item, index) => {
       doc.text(item.name, 10, yPos + index * 10);
       doc.text(item.category, 60, yPos + index * 10);
