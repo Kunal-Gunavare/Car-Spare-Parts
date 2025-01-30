@@ -92,7 +92,7 @@ const OrderHistoryPage = () => {
       doc.text(`${item.price}Rs`, 140, yPos + index * 10);
     });
   
-    // Calculate Total
+    
     const total = data.items.reduce((sum, item) => sum + item.price, 0);
     doc.text(`Total: ${total}Rs`, 140, yPos + data.items.length * 10 + 10);
   
