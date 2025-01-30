@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
-
+import { useNavigate } from "react-router-dom";
 const CartPage = () => {
+  const navigate = useNavigate();
   const { cart, removeFromCart } = useContext(CartContext);
   const [showForm, setShowForm] = useState(false);
   const [userDetails, setUserDetails] = useState({
@@ -28,8 +29,8 @@ const CartPage = () => {
       paymentId,
     };
 
-    console.log("order data:",orderData)
-    fetch("https://your-api-endpoint.com/orders", {
+    console.log("order data:", orderData);
+    fetch("http://localhost:3000/api/orders/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,6 +44,7 @@ const CartPage = () => {
       .catch((error) => {
         console.error("Error storing order:", error);
       });
+    navigate("/orders");
   };
 
   const handlePayment = () => {
@@ -56,7 +58,9 @@ const CartPage = () => {
       description: "Thank you for shopping with us!",
       image: "https://yourlogo.com/logo.png",
       handler: (response) => {
-        alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+        alert(
+          `Payment successful! Payment ID: ${response.razorpay_payment_id}`
+        );
         storeOrderInDatabase(response.razorpay_payment_id);
       },
       theme: {
@@ -76,8 +80,15 @@ const CartPage = () => {
       ) : (
         <div className="w-full max-w-md flex flex-col items-center">
           {cart.map((item) => (
-            <div key={item._id} className="bg-gray-800 p-4 mb-4 rounded-lg w-full text-center">
-              <img src={item.image} alt={item.name} className="w-32 h-32 mx-auto mb-2 rounded" />
+            <div
+              key={item._id}
+              className="bg-gray-800 p-4 mb-4 rounded-lg w-full text-center"
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-32 h-32 mx-auto mb-2 rounded"
+              />
               <h2>{item.name}</h2>
               <p>Price: ₹{item.price}</p>
               <button
