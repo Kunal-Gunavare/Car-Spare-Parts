@@ -74,7 +74,7 @@ const Dashboard = () => {
           </div>
           <nav className="hidden md:flex space-x-6">
             <Link to="/dashboard" className="text-gray-300 hover:text-green-500">Dashboard</Link>
-            <Link to="/orders" className="text-gray-300 hover:text-green-500">Orders</Link>
+            <Link to="/order" className="text-gray-300 hover:text-green-500">Orders</Link>
             <Link to="/profile" className="text-gray-300 hover:text-green-500">Profile</Link>
             <Link to="/settings" className="text-gray-300 hover:text-green-500">Settings</Link>
             <button
