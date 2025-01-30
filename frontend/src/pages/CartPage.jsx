@@ -44,7 +44,7 @@ const CartPage = () => {
       .catch((error) => {
         console.error("Error storing order:", error);
       });
-    navigate("/orders");
+    navigate("/OrderHistory");
   };
 
   const handlePayment = () => {

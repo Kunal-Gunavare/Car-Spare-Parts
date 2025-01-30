@@ -1,13 +1,13 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faShoppingCart,
-  faCreditCard,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  const scrollToSection = (id) => {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       {/* Header */}
@@ -27,30 +27,18 @@ const HomePage = () => {
             >
               Home
             </a>
-            <a
-              href="#about"
+            <button
+              onClick={() => scrollToSection('about')}
               className="text-gray-300 hover:text-green-500 transition duration-300"
             >
               About
-            </a>
-            <a
-              href="#gallery"
-              className="text-gray-300 hover:text-green-500 transition duration-300"
-            >
-              Gallery
-            </a>
-            <a
-              href="#blog"
-              className="text-gray-300 hover:text-green-500 transition duration-300"
-            >
-              Blog
-            </a>
-            <a
-              href="/Dashboard"
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
               className="text-gray-300 hover:text-green-500 transition duration-300"
             >
               Contact Us
-            </a>
+            </button>
           </nav>
           {/* User Actions */}
           <div className="flex items-center space-x-4">
@@ -60,20 +48,6 @@ const HomePage = () => {
             >
               <FontAwesomeIcon icon={faUser} className="mr-2" />
               My Account
-            </a>
-            <a
-              href="/Cart"
-              className="text-gray-300 hover:text-green-500 transition duration-300"
-            >
-              <FontAwesomeIcon icon={faShoppingCart} className="mr-2" />
-              Cart
-            </a>
-            <a
-              href="/Checkout"
-              className="text-gray-300 hover:text-green-500 transition duration-300"
-            >
-              <FontAwesomeIcon icon={faCreditCard} className="mr-2" />
-              Check Out
             </a>
           </div>
         </div>
@@ -111,17 +85,13 @@ const HomePage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="bg-gray-800 py-16">
+      <section id="about" className="bg-gray-800 py-16">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold text-green-500 mb-8 animate-fade-in">
             Why Choose Us?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <FontAwesomeIcon
-                icon={faUser}
-                className="text-green-500 text-4xl mb-4"
-              />
               <h3 className="text-2xl font-bold text-green-500 mb-4">
                 Best Service
               </h3>
@@ -130,10 +100,6 @@ const HomePage = () => {
               </p>
             </div>
             <div className="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <FontAwesomeIcon
-                icon={faShoppingCart}
-                className="text-green-500 text-4xl mb-4"
-              />
               <h3 className="text-2xl font-bold text-green-500 mb-4">
                 Affordable Prices
               </h3>
@@ -142,10 +108,6 @@ const HomePage = () => {
               </p>
             </div>
             <div className="bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <FontAwesomeIcon
-                icon={faCreditCard}
-                className="text-green-500 text-4xl mb-4"
-              />
               <h3 className="text-2xl font-bold text-green-500 mb-4">
                 Easy Payments
               </h3>
@@ -158,13 +120,18 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-center py-4">
-        <p className="text-gray-500">
-          &copy; 2025 Car Store. All rights reserved.
-        </p>
+      <footer id="contact" className="bg-black text-center py-8">
+        <div className="container mx-auto">
+          <h3 className="text-green-500 text-2xl font-bold mb-4">About Us</h3>
+          <p className="text-gray-400 mb-6">We are dedicated to providing top-quality car spare parts with excellent service.</p>
+          <h3 className="text-green-500 text-2xl font-bold mb-4">Contact Us</h3>
+          <p className="text-gray-400">Email: support@carsparesparts.com | Phone: +123 456 7890</p>
+          <p className="text-gray-400">Location: 123 Car Street, Auto City, CA</p>
+          <p className="text-gray-500 mt-6">&copy; 2025 Car Store. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );
 };
 
-export default HomePage;
+export default HomePage;

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +44,7 @@ const LoginPage = () => {
         {/* Left Image Section */}
         <div
           className="hidden md:block md:w-1/2 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://huykhong.com/codepen/wallpaper.jpg')" }}
+          style={{ backgroundImage: "url('https://media.istockphoto.com/id/1269648167/photo/car-parts-spares-and-accesoires-auto-service-and-car-repair-workshop-concept.jpg?s=170667a&w=0&k=20&c=rGBJWkVeYt2ksMInvpyDgg_S3taV6RJUhP9XpPlkzsg=')" }}
         ></div>
 
         {/* Right Form Section */}
@@ -108,3 +109,9 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+
+
+
+
+
