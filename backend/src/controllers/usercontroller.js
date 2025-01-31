@@ -15,12 +15,12 @@ const registerController = async (req, res) => {
         return res.status(400).json({ message: "All fields are required" });
       }
   
-      const hashedPassword = await hashPassword(password);
+      // const hashedPassword = await hashPassword(password);
   
       const newUser = new User({
         name,
         email,
-        password: hashedPassword,
+        password,
       });
   
       const savedUser = await newUser.save();
@@ -373,7 +373,7 @@ const resetPassword = async (req, res) => {
         return res.status(404).json({ message: "User not found" });
     }
 
-    user.password = await hashPassword(newPassword);
+    // user.password = await hashPassword(newPassword);
     await user.save();
     await PasswordResetToken.deleteOne({ _id: resetToken._id });
 
