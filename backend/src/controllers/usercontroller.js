@@ -61,10 +61,7 @@ const loginController  = async (req, res) => {
     //   console.log("Hashed password:", user.password);
     //   console.log("Password match result:", isPasswordCorrect);
     
-      if (!isPasswordCorrect) {
-        return res.status(401).json({ message: "Invalid credentials" });
-      }
-  
+      
       // Generate JWT token (optional)
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
   
