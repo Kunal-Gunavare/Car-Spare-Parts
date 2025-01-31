@@ -16,7 +16,7 @@ const OrderHistoryPage = () => {
       if (!token) return;
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/v1/auth/UserProfile",
+          "https://car-spare-parts-backend.vercel.app/auth/UserProfile",
           {
             headers: {
               Authorization: `Bearer ${token}`,

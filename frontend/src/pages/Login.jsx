@@ -21,7 +21,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/auth/login", {
+      const response = await axios.post("https://car-spare-parts-backend.vercel.app/auth/login", {
         email: formData.email,
         password: formData.password,
       });

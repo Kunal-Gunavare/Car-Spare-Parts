@@ -28,7 +28,7 @@
 //     }
 
 //     try {
-//       const response = await axios.post("http://localhost:3000/api/v1/auth/register", {
+//       const response = await axios.post("https://car-spare-parts-backend.vercel.app/auth/register", {
 //         name: formData.username,
 //         email: formData.email,
 //         password: formData.password,
@@ -112,7 +112,7 @@ const Registration = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/auth/register", {
+      const response = await axios.post("https://car-spare-parts-backend.vercel.app/auth/register", {
         name: formData.username,
         email: formData.email,
         password: formData.password,
