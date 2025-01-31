@@ -14,7 +14,12 @@ const port = 3000;
 
 // Explicitly configure CORS
 
-app.use(cors());
+const corsOptions = {
+  origin:"https://car-spare-parts.vercel.app",
+  credentials:true
+}
+app.use(cors(corsOptions));
+
 app.use(corsMiddleware); // Use CORS Middleware
 
 // Connect to the database
@@ -58,3 +63,5 @@ app.listen(port, (error) => {
   }
   console.log(`Server running at http://localhost:${port}`);
 });
+
+export default app;
