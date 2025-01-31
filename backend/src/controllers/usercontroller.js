@@ -1,10 +1,8 @@
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const crypto = require("crypto");
 const { User, PasswordResetToken } = require("../models/User.js");
 
-const { hashPassword } = require("../helper/userHelper.js");
 const { sendEmail } = require("../helper/sendEmail.js");
 require("dotenv").config(); // Load environment variables
 
@@ -59,7 +57,6 @@ const loginController  = async (req, res) => {
       
   
       // Compare hashed passwords
-      const isPasswordCorrect = await bcrypt.compare(password, user.password);
     //   console.log("Plain password:", password);
     //   console.log("Hashed password:", user.password);
     //   console.log("Password match result:", isPasswordCorrect);
