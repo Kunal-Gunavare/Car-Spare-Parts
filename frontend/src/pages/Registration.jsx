@@ -112,7 +112,7 @@ const Registration = () => {
     }
 
     try {
-      const response = await axios.post("https://car-spare-parts-backend.vercel.app/auth/register", {
+      const response = await axios.post("https://car-spare-parts-backend.vercel.app/api/v1/auth/register", {
         name: formData.username,
         email: formData.email,
         password: formData.password,

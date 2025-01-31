@@ -10,7 +10,7 @@ const UserProfile = () => {
 
       if (!token) return;
       try {
-        const response = await axios.get('https://car-spare-parts-backend.vercel.app/auth/UserProfile', {
+        const response = await axios.get('https://car-spare-parts-backend.vercel.app/api/v1/auth/UserProfile', {
           headers: {
           Authorization: `Bearer ${token}`,
           },
