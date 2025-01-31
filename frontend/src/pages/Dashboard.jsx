@@ -24,7 +24,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/products");
+        const response = await axios.get("https://car-spare-parts-backend.vercel.app/api/products");
         setProducts(response.data);
         setFilteredProducts(response.data); // Initialize filtered products
       } catch (error) {
@@ -44,7 +44,7 @@ const Dashboard = () => {
 
   const handleAddProduct = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/products", newProduct);
+      const response = await axios.post("https://car-spare-parts-backend.vercel.app/api/products", newProduct);
       if (response.status === 200) {
         setProducts([...products, response.data]);
         setIsModalOpen(false);

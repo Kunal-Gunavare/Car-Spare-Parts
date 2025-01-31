@@ -20,8 +20,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-app.use(corsMiddleware); // Use CORS Middleware
-
 // Connect to the database
 connectDB();
 

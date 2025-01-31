@@ -39,7 +39,7 @@ const OrderHistoryPage = () => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/orders?email=" + profile.email,
+          "https://car-spare-parts-backend.vercel.app/api/orders?email=" + profile.email,
           {}
         );
         setOrders(response.data);

@@ -30,7 +30,7 @@ const CartPage = () => {
     };
 
     console.log("order data:", orderData);
-    fetch("http://localhost:3000/api/orders/create", {
+    fetch("https://car-spare-parts-backend.vercel.app/api/orders/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
